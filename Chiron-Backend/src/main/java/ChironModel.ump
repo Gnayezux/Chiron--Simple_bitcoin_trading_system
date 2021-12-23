@@ -1,0 +1,71 @@
+namespace ca.mcgill.ecse428.chiron.model;  
+
+class Advertisement
+{
+  id;
+  adType;
+  rate;
+  currency;
+  paymentMethod;
+  adStatus;
+  double price;
+  createTime;
+  double min;
+  double max;
+  1 -- * Trade;
+  * -- 1 User creator;
+}
+
+class BitcoinSystem
+{
+  1 -- * Manager;
+    1 -- * User;
+  1 -- * Advertisement;
+}
+
+class Manager
+{
+  id;
+  email;
+  passcode;
+  1 -- * Service;
+}
+
+class Service
+{
+  id;
+  content;
+  serviceStatus;
+  * -- 1..2 User;
+}
+
+class Trade
+{
+  startTime;
+  endTime;
+  amount;
+  tradeStatus;
+  * -- 2 User;
+}
+
+class Transaction
+{
+  txid;
+  double amount;
+  time;
+  description;
+  * -- 1..2 User;
+}
+
+class User
+{
+  id;
+  double feedbackScore;
+  double bitcoinAmount;
+  email;
+  double tradeVolumn;
+  passcode;
+  userstatus;
+  creditlevel;
+}
+
